@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h3>Basket name: <%= @basket.name %></h3>
+</div>
+</div>
+
+<div class="row">
+ <% @fund_names.each do |i| %>
+ <div class="small-6 columns"><a class="individual_fund" href="/<%= i.symbol %>"><%= i.name %></a></div>
+ <% end %>
+</div>
+</div>
+
+<div class="row">
+    <div class="small-12 columns">
+        <h3>Basket Averages</h3>
+    </div>
+    <div class="small-12 large-6 columns">
+        Price: $<%= @basket_price.round(2) %><br>
+        Expense Ratio: <%= @basket_expense_ratio.round(2) %>%<br>
+        Dividend Yield: <%= @basket_div_yield.round(2) %>%<br>
+        <!-- year-to-date return: <%# @basket_ytd_return.round(2) %>%<br> -->
+        Five-year Average Return: <%= @basket_five_yr_return.round(2) %>%<br>
+        Best One-year Return: <%= @basket_best_one_yr_return.round(2) %>%<br>
+        Worst One-year Return: <%= @basket_worst_one_yr_return.round(2) %>%<br>
+    </div>
+    <div class="small-12 large-6 columns">
+        Three-year Alpha: <%= @basket_three_yr_alpha.round(2) %>
+        <% if (@basket_three_yr_alpha.round(2) - @basket_three_yr_alpha_cat.round(2)) > 0 %>
+        <span style="color: green;"><%= (@basket_three_yr_alpha.round(2) - @basket_three_yr_alpha_cat.round(2)).round(2) %> over category</span><br>
+        <% else %>
+        <span style="color: red;"><%= (@basket_three_yr_alpha.round(2) - @basket_three_yr_alpha_cat.round(2)).round(2) %> under category</span><br>
+        <% end %>
+        Three-year Beta: <%= @basket_three_yr_beta.round(2) %>
+        <% if (@basket_three_yr_beta.round(2) - @basket_three_yr_beta_cat.round(2)) > 0 %>
+        <span style="color: green;"><%= (@basket_three_yr_beta.round(2) - @basket_three_yr_beta_cat.round(2)).round(2) %> over category</span><br>
+        <% else %>
+        <span style="color: red;"><%= (@basket_three_yr_beta.round(2) - @basket_three_yr_beta_cat.round(2)).round(2) %> under category</span><br>
+        <% end %>
+        Three-year Sharpe Ratio: <%= @basket_three_yr_sharpe_ratio.round(2) %>
+        <% if (@basket_three_yr_sharpe_ratio.round(2) - @basket_three_yr_sharpe_ratio_cat.round(2)) > 0 %>
+        <span style="color: green;"><%= (@basket_three_yr_sharpe_ratio.round(2) - @basket_three_yr_sharpe_ratio_cat.round(2)).round(2) %> over category</span><br>
+        <% else %>
+        <span style="color: red;"><%= (@basket_three_yr_sharpe_ratio.round(2) - @basket_three_yr_sharpe_ratio_cat.round(2)).round(2) %> under category</span><br>
+        <% end %>
+        Three-year Treynor Ratio: <%= @basket_three_yr_treynor_ratio.round(2) %>
+        <% if (@basket_three_yr_treynor_ratio.round(2) - @basket_three_yr_treynor_ratio_cat.round(2)) > 0 %>
+        <span style="color: green;"><%= (@basket_three_yr_treynor_ratio.round(2) - @basket_three_yr_treynor_ratio_cat.round(2)).round(2) %> over category</span><br>
+        <% else %>
+        <span style="color: red;"><%= (@basket_three_yr_treynor_ratio.round(2) - @basket_three_yr_treynor_ratio_cat.round(2)).round(2) %> under category</span><br>
+        <% end %>
+    </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,141 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Name: <%= @name %></h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-6 large-3 columns">Price: $<%= @price %></div>
+  <div class="small-6 large-3 columns">Morningstar Rating: <%= @morningstar_rating %></div>
+</div>
+
+<div class="row">
+  <div class="small-6  large-3 columns">Total Assets: <%= @total_assets %></div>
+  <div class="small-6  large-3 columns">Category: <%= @category %></div>
+  <div class="small-6  large-3 columns">Expense Ratio: <%= @expense_ratio %></div>
+  <div class="small-6  large-3 columns">Five year average return: <%= @five_yr_return %></div>
+</div>
+
+<div class="row">
+  <div class="small-6 large-3 columns">Rank in category: <%= @rank_in_category %></div>
+  <div class="small-6 large-3 columns">Percent rank in category: <%= @percent_rank_in_category %></div>
+  <div class="small-6 large-3 columns">Three year beta: <%= @three_yr_beta %></div>
+  <div class="small-6 large-3 columns">Morningstar Risk Rating: <%= @morningstar_risk_rating %></div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">Description: <%= @description %>
+</div>
+
+<div class="row">
+  <div class=" small-12 columns">
+    <h4>Add to basket:</h4>
+    <% @baskets.each do |i| %>
+    <form id="add_to_basket" method="post" style="display: inline-block;" action="/users/<%= session[:id] %>/baskets/<%= i.id %>/funds/<%= @new_fund.id %>"
+      <input type="text" name="<%= i.name %>">
+      <input type="submit" value="<%= i.name %>" class="button">
+    </form>
+    <% end %>
+    <a class="delete button alert" href="/funds/<%= @new_fund.id %>">Delete</a></div>
+  </div>
+</div>
+
+<!-- Risk Overview -->
+<!-- <p>Morningstar Risk Rating: <%= @morningstar_risk_rating %><br></p>
+<p>Num years up: <%= @num_yrs_up %><br></p>
+<p>Num years down: <%= @num_yrs_down %><br></p>
+<p>Best one year return: <%= @best_one_yr_return %><br></p>
+<p>Worst one year return: <%= @worst_one_yr_return %><br></p> -->
+
+<!-- Risk Stats 3 year -->
+<!-- <p> Three Year Alpha: <%= @three_yr_alpha %> </p>
+<p> Three Year Alpha Category: <%= @three_yr_alpha_cat %> </p>
+<p> Three Year Beta: <%= @three_yr_beta %> </p>
+<p> Three Year Beta Category: <%= @three_yr_beta_cat %> </p>
+<p> Three Year Mean Annual Return: <%= @three_yr_mean_annual_return %> </p>
+<p> Three Year Mean Annual Return Category: <%= @three_yr_mean_annual_return_cat %> </p>
+<p> Three Year R Squared: <%= @three_yr_r_squared %> </p>
+<p> Three Year R Squared Category: <%= @three_yr_r_squred_cat %> </p>
+<p> Three Year Standard Deviation: <%= @three_yr_std_deviation %> </p>
+<p> Three Year Standard Deviation Category: <%= @three_yr_std_deviation_cat %> </p>
+<p> Three Year Sharpe Ratio: <%= @three_yr_sharpe_ratio %> </p>
+<p> Three Year Sharpe Ratio Category: <%= @three_yr_sharpe_ratio_cat %> </p>
+<p> Three Year Treynor Ratio: <%= @three_yr_treynor_ratio %> </p>
+<p> Three Year Treynor Ratio Category: <%= @three_yr_treynor_ratio_cat %> </p> -->
+
+<!-- Risk Stats 5 year -->
+<!-- <p> Five Year Alpha: <%= @five_yr_alpha %> </p>
+<p> Five Year Alpha Category: <%= @five_yr_alpha_cat %> </p>
+<p> Five Year Beta: <%= @five_yr_beta %> </p>
+<p> Five Year Beta Category: <%= @five_yr_beta_cat %> </p>
+<p> Five Year Mean Annual Return: <%= @five_yr_mean_annual_return %> </p>
+<p> Five Year Mean Annual Return Category: <%= @five_yr_mean_annual_return_cat %> </p>
+<p> Five Year R Squared: <%= @five_yr_r_squared %> </p>
+<p> Five Year R Squared Category: <%= @five_yr_r_squred_cat %> </p>
+<p> Five Year Standard Deviation: <%= @five_yr_std_deviation %> </p>
+<p> Five Year Standard Deviation Category: <%= @five_yr_std_deviation_cat %> </p>
+<p> Five Year Sharpe Ratio: <%= @five_yr_sharpe_ratio %> </p>
+<p> Five Year Sharpe Ratio Category: <%= @five_yr_sharpe_ratio_cat %> </p>
+<p> Five Year Treynor Ratio: <%= @five_yr_treynor_ratio %> </p>
+<p> Five Year Treynor Ratio Category: <%= @five_yr_treynor_ratio_cat %> </p> -->
+
+<!-- Risk Stats 10 year -->
+<!-- <p> Ten Year Alpha: <%= @ten_yr_alpha %> </p>
+<p> Ten Year Alpha Category: <%= @ten_yr_alpha_cat %> </p>
+<p> Ten Year Beta: <%= @ten_yr_beta %> </p>
+<p> Ten Year Beta Category: <%= @ten_yr_beta_cat %> </p>
+<p> Ten Year Mean Annual Return: <%= @ten_yr_mean_annual_return %> </p>
+<p> Ten Year Mean Annual Return Category: <%= @ten_yr_mean_annual_return_cat %> </p>
+<p> Ten Year R Squared: <%= @ten_yr_r_squared %> </p>
+<p> Ten Year R Squared Category: <%= @ten_yr_r_squred_cat %> </p>
+<p> Ten Year Standard Deviation: <%= @ten_yr_std_deviation %> </p>
+<p> Ten Year Standard Deviation Category: <%= @ten_yr_std_deviation_cat %> </p>
+<p> Ten Year Sharpe Ratio: <%= @ten_yr_sharpe_ratio %> </p>
+<p> Ten Year Sharpe Ratio Category: <%= @ten_yr_sharpe_ratio_cat %> </p>
+<p> Ten Year Treynor Ratio: <%= @ten_yr_treynor_ratio %> </p>
+<p> Ten Year Treynor Ratio Category: <%= @ten_yr_treynor_ratio_cat %> </p> -->
+
+<!-- three_yr_alpha: "#{@three_yr_alpha}",
+three_yr_alpha_cat: "#{@three_yr_alpha_cat}",
+three_yr_beta: "#{@three_yr_beta}",
+three_yr_beta_cat: "#{@three_yr_beta_cat}",
+three_yr_mean_annual_return: "#{@three_yr_mean_annual_return}",
+three_yr_mean_annual_return_cat: "#{@three_yr_mean_annual_return_cat}",
+three_yr_r_squared: "#{@three_yr_r_squared}",
+three_yr_r_squared_cat: "#{@three_yr_r_squred_cat}",
+three_yr_std_deviation: "#{@three_yr_std_deviation}",
+three_yr_std_deviation_cat: "#{@three_yr_std_deviation_cat}",
+three_yr_sharpe_ratio: "#{@three_yr_sharpe_ratio}",
+three_yr_sharpe_ratio_cat: "#{@three_yr_sharpe_ratio_cat}",
+three_yr_treynor_ratio: "#{@three_yr_treynor_ratio}",
+three_yr_treynor_ratio_cat: "#{@three_yr_treynor_ratio_cat}",
+
+five_yr_alpha: "#{@five_yr_alpha}",
+five_yr_alpha_cat: "#{@five_yr_alpha_cat}",
+five_yr_beta: "#{@five_yr_beta}",
+five_yr_beta_cat: "#{@five_yr_beta_cat}",
+five_yr_mean_annual_return: "#{@five_yr_mean_annual_return}",
+five_yr_mean_annual_return_cat: "#{@five_yr_mean_annual_return_cat}",
+five_yr_r_squared: "#{@five_yr_r_squared}",
+five_yr_r_squared_cat: "#{@five_yr_r_squred_cat}",
+five_yr_std_deviation: "#{@five_yr_std_deviation}",
+five_yr_std_deviation_cat: "#{@five_yr_std_deviation_cat}",
+five_yr_sharpe_ratio: "#{@five_yr_sharpe_ratio}",
+five_yr_sharpe_ratio_cat: "#{@five_yr_sharpe_ratio_cat}",
+five_yr_treynor_ratio: "#{@five_yr_treynor_ratio}",
+five_yr_treynor_ratio_cat: "#{@five_yr_treynor_ratio_cat}",
+
+ten_yr_alpha: "#{@ten_yr_alpha}",
+ten_yr_alpha_cat: "#{@ten_yr_alpha_cat}",
+ten_yr_beta: "#{@ten_yr_beta}",
+ten_yr_beta_cat: "#{@ten_yr_beta_cat}",
+ten_yr_mean_annual_return: "#{@ten_yr_mean_annual_return}",
+ten_yr_mean_annual_return_cat: "#{@ten_yr_mean_annual_return_cat}",
+ten_yr_r_squared: "#{@ten_yr_r_squared}",
+ten_yr_r_squared_cat: "#{@ten_yr_r_squred_cat}",
+ten_yr_std_deviation: "#{@ten_yr_std_deviation}",
+ten_yr_std_deviation_cat: "#{@ten_yr_std_deviation_cat}",
+ten_yr_sharpe_ratio: "#{@ten_yr_sharpe_ratio}",
+ten_yr_sharpe_ratio_cat: "#{@ten_yr_sharpe_ratio_cat}",
+ten_yr_treynor_ratio: "#{@ten_yr_treynor_ratio}",
+ten_yr_treynor_ratio_cat: "#{@ten_yr_treynor_ratio_cat}", -->

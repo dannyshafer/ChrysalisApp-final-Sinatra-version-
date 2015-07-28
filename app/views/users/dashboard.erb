@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="small-4 small-offset-2 columns">
+    <h3>Welcome, <%= @user.username %>!</h3>
+  </div>
+
+  <div class="small-6 columns">
+    <h3>How about adding some funds?</h3>
+    <form method="post" action="/user_mutf_summary">
+      <input type="text" name="fund" placeholder="Fund Symbol" />
+      <input type="submit" value="Hatch" class="button postfix"/>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-8 small-offest-4 columns">
+    <% @user.funds.each do |i| %>
+    <%= i.name %>
+    <% end %>
+  </div>
+</div>

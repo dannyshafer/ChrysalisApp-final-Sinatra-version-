@@ -1,0 +1,43 @@
+<br>
+
+<div class="row">
+  <div id="welcome" class="small-4 columns">
+    <h3>Welcome, <%= @user.username %>!</h3>
+  </div>
+
+  <div class="small-8 columns">
+  <% @user.baskets.reverse.each do |i| %>
+    <a class="individual_basket button tiny success" href="/users/<%= @user.id %>/baskets/<%= i.id %>"><%= i.name %></a>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="small-12 medium-6 large-6 columns">
+    <h3>Fund Lookup</h3>
+    <p>Type in a fund symbol here (FBIOX, FBTAX, RYSEX etc.)</p>
+    <form id="add" method="post" action="/ajax_mutf">
+      <input type="text" id="input_text" name="fund" placeholder="Fund Symbol" />
+      <input type="submit" value="Hatch" class="button postfix"/>
+    </form>
+  </div>
+
+
+  <div id="funds" class="small-12 medium-6 large-6 columns">
+    <h3>Your Baskets</h3>
+    <p>Name a basket to hold similar funds</p>
+    <form id="basket_add" method="post" action="/users/<%= @user.id %>/baskets">
+      <input type="text" id="basket_name" name="basket_name" placeholder="Basket Name" />
+      <input type="submit" value="Add" class="button postfix"/>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <span class="fund_summary" id="fund_summary"></span>
+  </div>
+</div>
+
+
